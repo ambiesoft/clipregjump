@@ -13,7 +13,11 @@
 #define WIN32_LEAN_AND_MEAN		// Windows ヘッダーから殆ど使用されないスタッフを除外します
 
 #include <windows.h>
+#include <shellapi.h>
+#include <tchar.h>
 
+#include <string>
+using namespace std;
 
 // TODO: プログラムで必要なヘッダー参照を追加してください。
 
