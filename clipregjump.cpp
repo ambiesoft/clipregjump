@@ -3,13 +3,17 @@
 
 #include "stdafx.h"
 #include "../MyUtility/IsFileExists.h"
-#include "../MyUtility/GetClipboardTexts.h"
+#include "../MyUtility/GetClipboardText.h"
+#include "../MyUtility/I18N.h"
+using namespace Ambiesoft;
 
-int APIENTRY WinMain(HINSTANCE hInstance,
+int APIENTRY _tWinMain(HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
-                     LPSTR     lpCmdLine,
+                     LPTSTR     lpCmdLine,
                      int       nCmdShow )
 {
+	initLangmap();
+
 	TCHAR szFolder[MAX_PATH];
 	TCHAR szIni[MAX_PATH];
 	GetModuleFileName(NULL,szFolder,MAX_PATH);
@@ -41,12 +45,22 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	}
 
 	tstring strClip;
-	if(!GetClipboardTexts(NULL, strClip))
+	if(!GetClipboardText(NULL, strClip))
 	{
-		MessageBox(NULL, _T("could not get clipboard text"),
+		MessageBox(NULL, I18N(_T("could not get clipboard text")),
 			_T("clipregjump"), MB_ICONERROR);
 		return -1;
 	}
+
+	if(strClip.empty())
+	{
+		MessageBox(NULL, I18N(_T("Clipboard text is empty")),
+			_T("clipregjump"), MB_ICONERROR);
+		return -1;
+	}
+
+	if(strClip[0] != L'"')
+		strClip = L'"' + strClip + L'"';
 
 	ShellExecute(NULL,NULL,szRegjumpPath,
 		strClip.c_str(), NULL, SW_SHOW);
