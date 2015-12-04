@@ -48,7 +48,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="L:\check"
+				AdditionalIncludeDirectories=".;L:\check"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_MBCS;UNICODE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -147,7 +147,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="L:\check"
+				AdditionalIncludeDirectories=".;L:\check"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;UNICODE"
 				StringPooling="true"
 				RuntimeLibrary="0"
@@ -249,7 +249,7 @@
 						Name="VCCLCompilerTool"
 						AdditionalIncludeDirectories=""
 						PreprocessorDefinitions=""
-						UsePrecompiledHeader="0"
+						UsePrecompiledHeader="2"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -259,9 +259,13 @@
 						Name="VCCLCompilerTool"
 						AdditionalIncludeDirectories=""
 						PreprocessorDefinitions=""
-						UsePrecompiledHeader="0"
+						UsePrecompiledHeader="2"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\MyUtility\GetOpenFile.cpp"
+				>
 			</File>
 			<File
 				RelativePath="..\MyUtility\I18N.cpp"
@@ -297,7 +301,7 @@
 						Name="VCCLCompilerTool"
 						AdditionalIncludeDirectories=""
 						PreprocessorDefinitions=""
-						UsePrecompiledHeader="0"
+						UsePrecompiledHeader="2"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -307,9 +311,13 @@
 						Name="VCCLCompilerTool"
 						AdditionalIncludeDirectories=""
 						PreprocessorDefinitions=""
-						UsePrecompiledHeader="0"
+						UsePrecompiledHeader="2"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\resource.rc"
+				>
 			</File>
 			<File
 				RelativePath="StdAfx.cpp"
@@ -342,6 +350,10 @@
 			>
 			<File
 				RelativePath="..\MyUtility\GetClipboardText.h"
+				>
+			</File>
+			<File
+				RelativePath="..\MyUtility\GetOpenFile.h"
 				>
 			</File>
 			<File

@@ -69,7 +69,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Yu"stdafx.h" /FD /GZ /c
-# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "L:\MSSDK\2003\Include" /I "L:\check" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /FR /Yu"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "." /I "L:\MSSDK\2003\Include" /I "L:\check" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /FR /Yu"stdafx.h" /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x411 /d "_DEBUG"
@@ -97,7 +97,11 @@ SOURCE=.\clipregjump.cpp
 # Begin Source File
 
 SOURCE=..\MyUtility\GetClipboardText.cpp
-# SUBTRACT CPP /YX /Yc /Yu
+# ADD CPP /Yu
+# End Source File
+# Begin Source File
+
+SOURCE=..\MyUtility\GetOpenFile.cpp
 # End Source File
 # Begin Source File
 
@@ -107,7 +111,11 @@ SOURCE=..\MyUtility\I18N.cpp
 # Begin Source File
 
 SOURCE=..\MyUtility\IsFileExists.cpp
-# SUBTRACT CPP /YX /Yc /Yu
+# ADD CPP /Yu
+# End Source File
+# Begin Source File
+
+SOURCE=.\resource.rc
 # End Source File
 # Begin Source File
 
@@ -121,6 +129,10 @@ SOURCE=.\StdAfx.cpp
 # Begin Source File
 
 SOURCE=..\MyUtility\GetClipboardText.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\MyUtility\GetOpenFile.h
 # End Source File
 # Begin Source File
 
@@ -138,6 +150,14 @@ SOURCE=.\StdAfx.h
 # Begin Group "Resource Files"
 
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+# Begin Source File
+
+SOURCE=.\icon.ico
+# End Source File
+# Begin Source File
+
+SOURCE=.\icon1.ico
+# End Source File
 # End Group
 # End Target
 # End Project

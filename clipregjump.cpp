@@ -2,8 +2,14 @@
 //
 
 #include "stdafx.h"
+
+#include <sstream>
+#include <iostream>
+#include <vector>
+
 #include "../MyUtility/IsFileExists.h"
 #include "../MyUtility/GetClipboardText.h"
+#include "../MyUtility/GetOpenFile.h"
 #include "../MyUtility/I18N.h"
 using namespace Ambiesoft;
 
@@ -12,7 +18,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
                      LPTSTR     lpCmdLine,
                      int       nCmdShow )
 {
-	initLangmap();
+	i18nInitLangmap();
 
 	TCHAR szFolder[MAX_PATH];
 	TCHAR szIni[MAX_PATH];
@@ -39,9 +45,32 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 	if(!IsFileExists(szRegjumpPath))
 	{
-		MessageBox(NULL, _T("regjump.exe not found"),
-			_T("clipregjump"), MB_ICONERROR);
-		return -1;
+		CGetOpenFileFilter filter;
+		filter.AddFilter(_T("regjump.exe"),_T("regjump.exe"), false);
+		filter.AddFilter(I18N(_T("Application")),_T("*.exe;*.com"));
+		filter.AddFilter(I18N(_T("All Files")), _T("*.*"));
+		tstring fullpath;
+		if(!GetOpenFile(NULL,
+			filter,
+			NULL,
+			I18N(_T("Specify regjump.exe")),
+			&fullpath))
+		{
+			return -1;
+		}
+
+		if(!WritePrivateProfileString(
+			_T("option"),
+			_T("regjumppath"),
+			fullpath.c_str(),
+			szIni))
+		{
+			MessageBox(NULL, I18N(_T("Failed to save .ini")),
+				_T("clipregjump"), MB_ICONERROR);
+			return -1;
+		}
+
+		lstrcpy(szRegjumpPath, fullpath.c_str());
 	}
 
 	tstring strClip;
@@ -58,6 +87,14 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 			_T("clipregjump"), MB_ICONERROR);
 		return -1;
 	}
+
+
+	//vector<tstring> lines;
+	//wistringstream f(strClip);
+	//wstring line;    
+	//while (std::getline(f, line)) {
+	//	lines.push_back(line);
+	//}
 
 	if(strClip[0] != L'"')
 		strClip = L'"' + strClip + L'"';
